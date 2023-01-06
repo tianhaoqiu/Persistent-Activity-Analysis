@@ -28,6 +28,7 @@ for i = 2:length(bar_position_array)
     absDiffFromCurrent = abs(previous_bar_postions - head_current); % absolute value of different from current heading
 
     aboveThresholdIndex = find(absDiffFromCurrent > var_heading_threshold);
+    
 
     if(isempty(aboveThresholdIndex))
         persistenceArray(i) = (i-1) / sampleRate;

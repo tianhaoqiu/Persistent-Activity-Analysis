@@ -28,7 +28,7 @@ function [persistenceArray] = persistenceOfHeadingBySample_v2(var_heading_thresh
 
 %Find index of all velocity above the threshold
 aboveThresholdIndex_velocity1 = find(velocity_1_angular > velocity_threshold1);
-aboveThresholdIndex_velocity2 = find(velocity_2_X > velocity_threshold2);
+aboveThresholdIndex_velocity2 = find(abs(velocity_2_X) > velocity_threshold2);
 aboveThresholdIndex_velocity3 = find(velocity_3_Y > velocity_threshold3);
 
 persistenceArray = zeros(length(bar_position_array),1); % initiate values
@@ -62,7 +62,6 @@ for i = 2:length(bar_position_array)
 
     if(isempty(aboveThresholdIndex) && max([max_v1, max_v2, max_v3]) == 0)
         persistenceArray(i) = (i-1) / sampleRate;
-
     else
         mostRecentAboveThreshold = max(aboveThresholdIndex);
         mostRecentAboveThreshold = max([mostRecentAboveThreshold, max_v1, max_v2, max_v3]);
