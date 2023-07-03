@@ -69,12 +69,12 @@ end
 % low pass filter the position array
  filteredPosition = lowPassFilter( cleanedPos, lowPassFilterCutOff, sampleRate );
 
-%  NUMBER_OF_FILTER_ROUNDS = 10;
+  NUMBER_OF_FILTER_ROUNDS = 10;
 %  % filter 9 more times:
-%  for i = 1 : NUMBER_OF_FILTER_ROUNDS - 1
+  for i = 1 : NUMBER_OF_FILTER_ROUNDS - 1
 %       % low pass filter the position array again to be more aggressize
-%  filteredPosition = lowPassFilter( filteredPosition, lowPassFilterCutOff, sampleRate );
-%  end
+  filteredPosition = lowPassFilter( filteredPosition, lowPassFilterCutOff, sampleRate );
+  end
  
 % plotting to check how well unwrapping, cleaning and filtering worked
 % can be commented out once you are happy with the parameters
@@ -89,8 +89,7 @@ end
 % plot(cleanedPos, 'DisplayName', 'cleanedPos' ); hold on; legend('show');
 % ax(4) = subplot (4, 1, 4);
 % plot(filteredPosition, 'DisplayName', 'filteredPosition' ); hold on; legend('show')
-% linkaxes(ax,'x');
-% legend('show')
+% linkaxes(ax,'x');legend('show')
 
 
 % transform from radians into degrees, send to user
@@ -110,14 +109,14 @@ velocityOut = lowPassFilter( velocityOut, lowPassFilterCutOff, sampleRate );
 velocityOut = replaceValuesOutsideThresholdBound( velocityOut, maxFlyVelocity);
 
 % plotting to check degree calulation and velocity
-figure('Position',[50, 50, 1000, 400]);  set(gcf, 'Color', 'w');
-bx(1) = subplot(3, 1, 1);
-plot(filteredPosition, 'DisplayName', 'filteredPosition' ); hold on; legend('show');
-bx(1) = subplot(3, 1, 2);
-plot(accumulatedPositionOut, 'DisplayName', 'accumulatedPosition' ); hold on; legend('show');
-ylabel ('deg');
-bx(2) = subplot (3, 1, 3);
-plot(velocityOut, 'DisplayName', 'velocity' ); hold on; legend('show');linkaxes(bx,'x');
+% figure('Position',[50, 50, 1000, 400]);  set(gcf, 'Color', 'w');
+% bx(1) = subplot(3, 1, 1);
+% plot(filteredPosition, 'DisplayName', 'filteredPosition' ); hold on; legend('show');
+% bx(1) = subplot(3, 1, 2);
+% plot(accumulatedPositionOut, 'DisplayName', 'accumulatedPosition' ); hold on; legend('show');
+% ylabel ('deg');
+% bx(2) = subplot (3, 1, 3);
+% plot(velocityOut, 'DisplayName', 'velocity' ); hold on; legend('show');linkaxes(bx,'x');
 
 
 end
